@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Verano Estate - Luxury Vacation Rental by Chef Franko in Puerto Vallarta">
+    <title>Verano Estate by Chef Franko - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;500;600;700&display=swap');
+
+        :root {
+            --brand-teal: #003C3C;
+            --brand-bg: #FBF7F0;
+            --accent: #4c7c7c;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--brand-bg);
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--brand-teal);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(0, 60, 60, 0.9) 0%, rgba(76, 124, 124, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1920&auto=format&fit=crop') center/cover;
+            min-height: 70vh;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 60, 60, 0.2);
+        }
+
+        .btn-primary {
+            background-color: var(--brand-teal);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #002a2a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 60, 60, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #3d6363;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--brand-teal), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-btn {
+            border: 1px solid var(--brand-teal);
+            color: var(--brand-teal);
+            background: transparent;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background-color: #e5e7eb;
+        }
+
+        .lang-btn.active {
+            background-color: var(--brand-teal);
+            color: white;
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            cursor: pointer;
+        }
+
+        .service-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button onclick="setLanguage('es')" id="btn-es" class="lang-btn active">🇪🇸 ES</button>
+        <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">🇺🇸 EN</button>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/523221606843" target="_blank" class="whatsapp-float" aria-label="Contact us on WhatsApp">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.63z" />
+        </svg>
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white flex items-center justify-center px-6">
+        <div class="text-center max-w-4xl">
+            <p class="text-2xl sm:text-3xl tracking-[0.3em] mb-4 font-semibold" data-i18n="brand">VERANO ESTATE</p>
+            <h1 class="text-5xl sm:text-7xl font-bold mb-6" data-i18n="heroTitle">Luxury Vacation Experience</h1>
+            <p class="text-xl sm:text-2xl mb-8 opacity-90" data-i18n="heroSubtitle">by Chef Franko • Puerto Vallarta
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html" class="btn-primary" data-i18n="btnGuestForm">Complete Guest Form</a>
+                <a href="HTML-MENU.html" class="btn-secondary" data-i18n="btnMenu">View Our Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="max-w-6xl mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl sm:text-5xl font-bold mb-4" data-i18n="welcomeTitle">Welcome to Verano Estate</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-i18n="welcomeText">
+                Experience the perfect blend of luxury accommodation and exceptional culinary service in the heart of
+                Puerto Vallarta. Our estate offers exclusive amenities and personalized attention to make your stay
+                unforgettable.
+            </p>
+        </div>
+
+        <!-- WiFi Info -->
+        <div class="max-w-md mx-auto mb-16">
+            <img src="https://i.imgur.com/1CQ3BSd.png" alt="WiFi Information" class="w-full h-auto rounded-lg shadow-lg">
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+            <div class="text-center">
+                <div class="feature-icon">🏠</div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="feature1Title">11 Luxury Rooms</h3>
+                <p class="text-gray-600" data-i18n="feature1Desc">Spacious rooms with King and Queen beds, perfect for
+                    groups and families</p>
+            </div>
+            <div class="text-center">
+                <div class="feature-icon">👨‍🍳</div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="feature2Title">Chef Franko's Cuisine</h3>
+                <p class="text-gray-600" data-i18n="feature2Desc">Gourmet meals tailored to your preferences and
+                    dietary needs</p>
+            </div>
+            <div class="text-center">
+                <div class="feature-icon">✨</div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="feature3Title">Personalized Service</h3>
+                <p class="text-gray-600" data-i18n="feature3Desc">Activities, transportation, and special occasion
+                    planning</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="bg-white py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12" data-i18n="servicesTitle">Our Services</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="index.html" class="card text-center group">
+                    <div class="text-4xl mb-4">📋</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="service1">Guest Registration</h3>
+                    <p class="text-gray-600 text-sm mb-4" data-i18n="service1Desc">Complete form with room assignments
+                        and preferences</p>
+                    <span class="text-sm text-[var(--brand-teal)] font-semibold" data-i18n="learnMore">Access →</span>
+                </a>
+
+                <a href="guest-form.html" class="card text-center group">
+                    <div class="text-4xl mb-4">✍️</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="service2">Quick Form</h3>
+                    <p class="text-gray-600 text-sm mb-4" data-i18n="service2Desc">Simplified registration for faster
+                        check-in</p>
+                    <span class="text-sm text-[var(--brand-teal)] font-semibold" data-i18n="learnMore">Access →</span>
+                </a>
+
+                <a href="HTML-MENU.html" class="card text-center group">
+                    <div class="text-4xl mb-4">🍽️</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="service3">Interactive Menu</h3>
+                    <p class="text-gray-600 text-sm mb-4" data-i18n="service3Desc">Select your daily meals and
+                        preferences</p>
+                    <span class="text-sm text-[var(--brand-teal)] font-semibold" data-i18n="learnMore">Access →</span>
+                </a>
+
+                <a href="menu-restaurante.html" class="card text-center group">
+                    <div class="text-4xl mb-4">📖</div>
+                    <h3 class="text-xl font-bold mb-2" data-i18n="service4">Restaurant Menu</h3>
+                    <p class="text-gray-600 text-sm mb-4" data-i18n="service4Desc">View our complete menu offerings</p>
+                    <span class="text-sm text-[var(--brand-teal)] font-semibold" data-i18n="learnMore">Access →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="max-w-6xl mx-auto px-6 py-16">
+        <h2 class="text-4xl font-bold text-center mb-4" data-i18n="activitiesTitle">Activities & Experiences</h2>
+        <p class="text-center text-gray-600 mb-12" data-i18n="activitiesSubtitle">Enhance your stay with these amazing
+            experiences</p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="card">
+                <div class="text-3xl mb-3">🎺</div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="activity1">Mariachi & Music</h3>
+                <p class="text-gray-600 text-sm" data-i18n="activity1Desc">Live traditional Mexican music for your
+                    celebrations</p>
+            </div>
+
+            <div class="card">
+                <div class="text-3xl mb-3">🧘</div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="activity2">Yoga & Wellness</h3>
+                <p class="text-gray-600 text-sm" data-i18n="activity2Desc">Private yoga sessions and spa treatments</p>
+            </div>
+
+            <div class="card">
+                <div class="text-3xl mb-3">🚤</div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="activity3">Private Yacht</h3>
+                <p class="text-gray-600 text-sm" data-i18n="activity3Desc">Exclusive boat tours and water activities
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="text-3xl mb-3">🏍️</div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="activity4">ATV Tours</h3>
+                <p class="text-gray-600 text-sm" data-i18n="activity4Desc">Adventure tours through the jungle and
+                    mountains</p>
+            </div>
+
+            <div class="card">
+                <div class="text-3xl mb-3">🌆</div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="activity5">City Tours</h3>
+                <p class="text-gray-600 text-sm" data-i18n="activity5Desc">Discover Puerto Vallarta's culture and
+                    history</p>
+            </div>
+
+            <div class="card">
+                <div class="text-3xl mb-3">💆</div>
+                <h3 class="text-xl font-bold mb-2" data-i18n="activity6">Spa & Massage</h3>
+                <p class="text-gray-600 text-sm" data-i18n="activity6Desc">Relaxing treatments in the comfort of the
+                    estate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="bg-[var(--brand-teal)] text-white py-16">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6" data-i18n="contactTitle">Get in Touch</h2>
+            <p class="text-xl mb-8 opacity-90" data-i18n="contactSubtitle">We're here to make your stay perfect</p>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-10">
+                <div>
+                    <div class="text-3xl mb-2">📱</div>
+                    <p class="font-semibold mb-1" data-i18n="contactPhone">WhatsApp</p>
+                    <a href="https://wa.me/523221606843" class="opacity-90 hover:opacity-100">+52 322 160 6843</a>
+                </div>
+                <div>
+                    <div class="text-3xl mb-2">📧</div>
+                    <p class="font-semibold mb-1" data-i18n="contactEmail">Email</p>
+                    <a href="mailto:franko@veranostate.com" class="opacity-90 hover:opacity-100">franko@veranostate.com</a>
+                </div>
+                <div>
+                    <div class="text-3xl mb-2">📸</div>
+                    <p class="font-semibold mb-1" data-i18n="contactInstagram">Instagram</p>
+                    <a href="https://instagram.com/veranostate" target="_blank" class="opacity-90 hover:opacity-100">@veranostate</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/523221606843" class="bg-white text-[var(--brand-teal)] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
+                    <span data-i18n="btnContact">Contact Us on WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#002a2a] text-white py-8">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="font-bold text-lg tracking-wide mb-2">VERANO ESTATE by chef franko</p>
+            <p class="text-gray-400 text-sm mb-4" data-i18n="footerLocation">Puerto Vallarta, México</p>
+            <div class="border-t border-gray-700 pt-6 mt-6">
+                <p class="text-sm text-gray-400">&copy; 2025 VERANO ESTATE. <span data-i18n="footerRights">All rights
+                        reserved</span>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            es: {
+                brand: "VERANO ESTATE",
+                heroTitle: "Experiencia de Lujo en Vacaciones",
+                heroSubtitle: "by Chef Franko • Puerto Vallarta",
+                btnGuestForm: "Formulario de Huéspedes",
+                btnMenu: "Ver Nuestro Menú",
+                welcomeTitle: "Bienvenido a Verano Estate",
+                welcomeText: "Experimenta la combinación perfecta de alojamiento de lujo y servicio culinario excepcional en el corazón de Puerto Vallarta. Nuestra propiedad ofrece amenidades exclusivas y atención personalizada para hacer tu estancia inolvidable.",
+                feature1Title: "11 Habitaciones de Lujo",
+                feature1Desc: "Habitaciones espaciosas con camas King y Queen, perfectas para grupos y familias",
+                feature2Title: "Cocina de Chef Franko",
+                feature2Desc: "Comidas gourmet adaptadas a tus preferencias y necesidades dietéticas",
+                feature3Title: "Servicio Personalizado",
+                feature3Desc: "Actividades, transporte y planificación de ocasiones especiales",
+                servicesTitle: "Nuestros Servicios",
+                service1: "Registro de Huéspedes",
+                service1Desc: "Formulario completo con asignación de habitaciones y preferencias",
+                service2: "Formulario Rápido",
+                service2Desc: "Registro simplificado para check-in más rápido",
+                service3: "Menú Interactivo",
+                service3Desc: "Selecciona tus comidas diarias y preferencias",
+                service4: "Menú del Restaurante",
+                service4Desc: "Ve nuestra oferta completa de menú",
+                learnMore: "Acceder →",
+                activitiesTitle: "Actividades y Experiencias",
+                activitiesSubtitle: "Mejora tu estancia con estas experiencias increíbles",
+                activity1: "Mariachi y Música",
+                activity1Desc: "Música tradicional mexicana en vivo para tus celebraciones",
+                activity2: "Yoga y Bienestar",
+                activity2Desc: "Sesiones privadas de yoga y tratamientos de spa",
+                activity3: "Yate Privado",
+                activity3Desc: "Tours exclusivos en bote y actividades acuáticas",
+                activity4: "Tours en ATV",
+                activity4Desc: "Tours de aventura por la selva y montañas",
+                activity5: "Tours por la Ciudad",
+                activity5Desc: "Descubre la cultura e historia de Puerto Vallarta",
+                activity6: "Spa y Masajes",
+                activity6Desc: "Tratamientos relajantes en la comodidad de la propiedad",
+                contactTitle: "Ponte en Contacto",
+                contactSubtitle: "Estamos aquí para hacer tu estancia perfecta",
+                contactPhone: "WhatsApp",
+                contactEmail: "Correo",
+                contactInstagram: "Instagram",
+                btnContact: "Contáctanos por WhatsApp",
+                footerLocation: "Puerto Vallarta, México",
+                footerRights: "Todos los derechos reservados"
+            },
+            en: {
+                brand: "VERANO ESTATE",
+                heroTitle: "Luxury Vacation Experience",
+                heroSubtitle: "by Chef Franko • Puerto Vallarta",
+                btnGuestForm: "Complete Guest Form",
+                btnMenu: "View Our Menu",
+                welcomeTitle: "Welcome to Verano Estate",
+                welcomeText: "Experience the perfect blend of luxury accommodation and exceptional culinary service in the heart of Puerto Vallarta. Our estate offers exclusive amenities and personalized attention to make your stay unforgettable.",
+                feature1Title: "11 Luxury Rooms",
+                feature1Desc: "Spacious rooms with King and Queen beds, perfect for groups and families",
+                feature2Title: "Chef Franko's Cuisine",
+                feature2Desc: "Gourmet meals tailored to your preferences and dietary needs",
+                feature3Title: "Personalized Service",
+                feature3Desc: "Activities, transportation, and special occasion planning",
+                servicesTitle: "Our Services",
+                service1: "Guest Registration",
+                service1Desc: "Complete form with room assignments and preferences",
+                service2: "Quick Form",
+                service2Desc: "Simplified registration for faster check-in",
+                service3: "Interactive Menu",
+                service3Desc: "Select your daily meals and preferences",
+                service4: "Restaurant Menu",
+                service4Desc: "View our complete menu offerings",
+                learnMore: "Access →",
+                activitiesTitle: "Activities & Experiences",
+                activitiesSubtitle: "Enhance your stay with these amazing experiences",
+                activity1: "Mariachi & Music",
+                activity1Desc: "Live traditional Mexican music for your celebrations",
+                activity2: "Yoga & Wellness",
+                activity2Desc: "Private yoga sessions and spa treatments",
+                activity3: "Private Yacht",
+                activity3Desc: "Exclusive boat tours and water activities",
+                activity4: "ATV Tours",
+                activity4Desc: "Adventure tours through the jungle and mountains",
+                activity5: "City Tours",
+                activity5Desc: "Discover Puerto Vallarta's culture and history",
+                activity6: "Spa & Massage",
+                activity6Desc: "Relaxing treatments in the comfort of the estate",
+                contactTitle: "Get in Touch",
+                contactSubtitle: "We're here to make your stay perfect",
+                contactPhone: "WhatsApp",
+                contactEmail: "Email",
+                contactInstagram: "Instagram",
+                btnContact: "Contact Us on WhatsApp",
+                footerLocation: "Puerto Vallarta, Mexico",
+                footerRights: "All rights reserved"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerText = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
+
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'es';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+
+</html>
